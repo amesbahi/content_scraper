@@ -20,9 +20,8 @@ function getRequest(url, callback) {
         url: url
     }, function (err, response, body) {
         if (!err && response.statusCode == 200) {
-            return callback(null, body); // Ask Trevor about origin of this syntax
+            return callback(null, body);
         } else {
-            //return console.error(callback(`Sorry, there was a` + response.statusCode + `error.`));
             return console.error("Looks like there's an error. Please try again later.");
         }
     });
@@ -91,20 +90,15 @@ function getShirtDetails(callback) {
     });
 }
 
-// can live in another file, etc...
-
 // Format date for CSV file
 let todaysDate = new Date();
 let year = todaysDate.getFullYear();
 let mm = todaysDate.getMonth() + 1;
 let dd = todaysDate.getDate();
-console.log(year, mm, dd);
 
 // Putting all of the data in a CSV file
 getShirtDetails(function (err, shirtDetails) {
-    console.log(err, shirtDetails);
     let fields = ["title", "price", "shirtURL", "url", "time"];
-
     let csv = json2csv({ data: shirtDetails, fields: fields });
 
     fs.writeFile('./data/' + `${year}-${mm}-${dd}` + '.csv', csv, function (err) {
