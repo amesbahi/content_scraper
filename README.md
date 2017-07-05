@@ -1,1 +1,1 @@
-# content_scraper
+Imagine I work for a price comparison website. I've been given the task to create a Node.js command line application that goes to an ecommerce site to get the latest prices and save them to a spreadsheet (CSV format). I have to write the application as if the spreadsheet will be used by another application to populate a database. The application I build can run once every day. I use npm packages that help scrape a website and create a CSV file.
